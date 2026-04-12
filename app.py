@@ -28,7 +28,6 @@ def simulate_website_active(row) -> bool:
     # ~70% active
     return last_digit % 3 != 0
 
-
 def validate_provider_data(df: pd.DataFrame) -> pd.DataFrame:
     df = df.copy()
 
@@ -55,7 +54,6 @@ def validate_provider_data(df: pd.DataFrame) -> pd.DataFrame:
         df.at[idx, "Address_Valid"] = valid_address(addr)
 
     return df
-
 
 # --------------------------------------------------------------------
 # AGENT 2 – ENRICHMENT (SIMULATED AI)
@@ -97,7 +95,6 @@ def enrich_provider_data(df: pd.DataFrame) -> pd.DataFrame:
         df.at[idx, "AI_Summary"] = summary
 
     return df
-
 
 # --------------------------------------------------------------------
 # AGENT 3 – QUALITY SCORING (EXTREME, TUNED)
