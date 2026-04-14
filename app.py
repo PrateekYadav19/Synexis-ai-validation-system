@@ -5,7 +5,6 @@ import pandas as pd
 from collections import Counter
 import numpy as np
 import altair as alt
-
 # --------------------------------------------------------------------
 # APP CONFIG
 # --------------------------------------------------------------------
@@ -37,7 +36,6 @@ def validate_provider_data(df: pd.DataFrame) -> pd.DataFrame:
     df["Address_Valid"] = False
 
     phone_pattern = re.compile(r"^[0-9\-\.\(\) xX+]{7,25}$") 
-
     def valid_address(addr: str) -> bool:
         return len(addr) > 10 and "," in addr
 
@@ -60,7 +58,6 @@ def validate_provider_data(df: pd.DataFrame) -> pd.DataFrame:
 # --------------------------------------------------------------------
 def enrich_provider_data(df: pd.DataFrame) -> pd.DataFrame:
     df = df.copy()
-
     df["Website_Title"] = ""
     df["AI_Specialty_Prediction"] = ""
     df["AI_Category"] = ""
