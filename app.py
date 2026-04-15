@@ -9,8 +9,6 @@ import altair as alt
 # APP CONFIG
 # --------------------------------------------------------------------
 st.set_page_config(page_title="Synexis", layout="wide")
-
-
 # --------------------------------------------------------------------
 # AGENT 1 – VALIDATION
 # --------------------------------------------------------------------
@@ -84,7 +82,6 @@ def enrich_provider_data(df: pd.DataFrame) -> pd.DataFrame:
             f"{provider} is a {specialty} provider at {clinic} based in {state}, "
             f"serving patients as a {category.lower()}."
         )
-
         df.at[idx, "Website_Title"] = website_title
         df.at[idx, "AI_Specialty_Prediction"] = specialty
         df.at[idx, "AI_Category"] = category
@@ -92,7 +89,6 @@ def enrich_provider_data(df: pd.DataFrame) -> pd.DataFrame:
         df.at[idx, "AI_Summary"] = summary
 
     return df
-
 # --------------------------------------------------------------------
 # AGENT 3 – QUALITY SCORING (EXTREME, TUNED)
 # --------------------------------------------------------------------
@@ -138,7 +134,6 @@ def compute_quality_scores(df: pd.DataFrame) -> pd.DataFrame:
         if specialty == "" or specialty.lower() == "nan":
             score -= 10
             notes.append("Missing specialty")
-
         state = str(row.get("State", "")).strip()
         if state not in valid_states:
             score -= 6
@@ -174,7 +169,6 @@ def compute_quality_scores(df: pd.DataFrame) -> pd.DataFrame:
         if specialty not in primary_care_specialties and ai_cat == "Primary Care Clinic":
             score -= 6
             notes.append("AI category mismatch: should be specialist")
-
         if len(str(row.get("AI_Summary", "")).strip()) < 25:
             score -= 4
             notes.append("Weak AI summary")
@@ -213,7 +207,6 @@ def compute_quality_scores(df: pd.DataFrame) -> pd.DataFrame:
 
     return df
 
-
 # --------------------------------------------------------------------
 # HYBRID FUTURISTIC + PROFESSIONAL CSS
 # --------------------------------------------------------------------
@@ -239,7 +232,6 @@ html, body, [class*="css"] {
 [data-testid="stAppViewContainer"] {
     background: radial-gradient(circle at top, #02101f 0, #020814 45%, #000000 100%);
 }
-
 /* ==============================
 HEADER + ANIMATIONS
 ============================== */
