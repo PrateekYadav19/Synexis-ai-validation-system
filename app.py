@@ -24,7 +24,6 @@ def simulate_website_active(row) -> bool:
     last_digit = int(npi[-1])
     # ~70% active
     return last_digit % 3 != 0
-
 def validate_provider_data(df: pd.DataFrame) -> pd.DataFrame:
     df = df.copy()
 
